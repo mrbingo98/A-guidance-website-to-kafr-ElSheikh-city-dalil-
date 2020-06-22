@@ -129,7 +129,13 @@ app.get('/contact', (req, res) => {
     res.render('contactUs')
 })
 app.get('/about', (req, res) => {
-        res.render('about')
+    res.render('about')
+})
+app.get('/studenthousing', (req, res) => {
+    res.render('studentHousing')
+})
+app.get('/microbus', (req, res) => {
+        res.render('microbus')
     })
     //------------------Using Routes---------------------------//
 app.use('/trains', trainRoute)

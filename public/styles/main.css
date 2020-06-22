@@ -21,23 +21,6 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
-
-/* body {
-    background: linear-gradient(to bottom, #000030, #03e9f4, #1106b3, #5c0074, #7a0327);
-    background-size: 100%;
-    background-repeat: no-repeat;
-}
-
-body:before {
-    content: '';
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    z-index: -1;
-    background: linear-gradient(to right bottom, rgba(80, 106, 255, 0.2), #21D4FD 75%);
-} */
-
 .disabeled {
     display: none;
 }
@@ -110,7 +93,9 @@ footer {
 #special_map {
     height: 450px;
     width: 100%;
-    margin: 3%;
+    margin: 0;
+    margin-top: 2em;
+    margin-bottom: 1em;
 }
 
 .map {

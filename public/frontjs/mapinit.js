@@ -1,6 +1,6 @@
 function initMap() {
     // The location of kafr elsheikh
-    var kafr_elsheikh = { lat: 31.11188, lng: 30.93612 };
+    var kafr_elsheikh = { lat: 31.0954860, lng: 30.9528520 };
 
     // The map, centered at kafr elsheikh31.11188 30.93612
     var map = new google.maps.Map(
