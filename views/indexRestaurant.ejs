@@ -1,0 +1,142 @@
+<%- include('partials/header'); -%>
+    <style>
+        .btn {
+            padding: 0.07em 0.25em;
+            margin-left: 0.5em;
+        }
+        
+        .col8container {
+            border-left: solid rgba(255, 255, 255, 0.418) 1px;
+        }
+        
+        .delete {
+            margin: 0;
+            padding: 0.25em;
+        }
+        /* .media-body {
+            position: relative;
+        } */
+        
+        .media {
+            color: rgb(221, 221, 221);
+            position: relative;
+            border-bottom-color: #636363;
+            border-bottom-style: solid;
+            border-right-color: #636363;
+            border-bottom-width: 1px;
+            border-right-width: 2px;
+            border-right-style: solid;
+            border-bottom-right-radius: 5px;
+            margin-top: 2em;
+            padding-top: 0;
+            margin-bottom: 1em;
+        }
+        
+        .form-inline {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+        }
+    </style>
+    <header>
+        <div class="container">
+            <h1 style="color: #c7d7fa;">
+                <%=rest.name%>
+            </h1>
+        </div>
+    </header>
+    <div class="container green infcontainer">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="..\<%= rest.image %>" class="img-responsive col-md-11 rounded-border" alt="<%= rest.name  %> Pic">
+                    <div class="caption-full">
+                        <p class="pull-right">Open from
+                            <%= rest.openTime %> To
+                                <%= rest.closeTime %>.</p>
+                        <p class="phone">
+                            <span>PNumber: </span>
+                            <%= rest.phone %>
+                        </p>
+                    </div>
+                    <% if(isAuthenticated && currentUser.username === rest.owner.username) {%>
+
+                        <form style="margin-bottom: .5em;" action="/restaurants/<%= rest._id %>?_m=DELETE" method="POST">
+                            <button class="btn btn-outline-danger" style="padding: 0.25em;">
+                            Delete <%= rest.name %> 
+                        </button>
+                        </form>
+                        <form action="/restaurants/<%= rest._id %>/edit" method="GET">
+                            <button class="btn btn-outline-secondary" style="padding: 0.25em;">
+                            Edit <%= rest.name %> 
+                        </button>
+                        </form>
+                        <%} %>
+
+                </div>
+                <% rest.posts.forEach(function(post) { %>
+                    <div class="media">
+                        <% if(isAuthenticated && currentUser.username === rest.owner.username){%>
+                            <form class="form-inline" action="/restaurants/<%=rest._id%>/post/<%=post._id%>?_m=DELETE" method="POST">
+                                <a class="btn btn-outline-secondary delete" href="/restaurants/<%=rest._id%>/post/<%=post._id%>/edit" style="margin-right: 1em;">Edit</a>
+                                <button class="btn btn-outline-danger delete" type="submit">Delete</button>
+
+                            </form>
+                            <%} %>
+                                <div class="media-body" style="padding-right: 0.25em;">
+                                    <h4 class="media-heading">
+                                        <%= rest.name %>
+                                    </h4>
+                                    <%= post.body %>
+                                </div>
+                    </div>
+                    <%}) %>
+            </div>
+            <div class="col-md-8">
+                <diV class="container col8container" style="margin-bottom: 4em;">
+                    <% if(isAuthenticated && currentUser.username === rest.owner.username) {%>
+                        <a href="/restaurants/<%=rest._id%>/post/new">
+                            <h3>Publish new post</h3>
+                        </a>
+                        <%} %>
+
+                            <div id="special_map">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d27325.3511593924!2d30.9694773!3d31.1189335!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x70cf36059a8b199e!2z2YXYt9i52YUg2YPYtNix2Ykg2KfZhNiy2LnZitmF!5e0!3m2!1sen!2seg!4v1591042681766!5m2!1sen!2seg"
+                                    class="map" allowfullscreen="true" aria-hidden="false" tabindex=""></iframe>
+                            </div>
+                            <% rest.comments.forEach(function(comment) { %>
+                                <div class="media">
+                                    <% if(isAuthenticated && currentUser.username === comment.auther.username){%>
+                                        <form class="form-inline" action="/restaurants/<%=rest._id%>/comments/<%=comment._id%>?_m=DELETE" method="POST">
+                                            <button class="btn btn-outline-danger delete" type="submit">Delete</button>
+                                            <!-- <i class="fa fa-trash"></i> -->
+                                        </form>
+                                        <%} %>
+                                            <div class="media-body">
+                                                <h4 class="media-heading">
+                                                    <%= comment.auther.username %>
+                                                </h4>
+
+
+                                                <p>
+                                                    <%= comment.text %>
+                                                </p>
+
+
+                                            </div>
+                                </div>
+                                <%}) %>
+                                    <div class="comment-box">
+                                        <form class="form-comment" action="/restaurants/<%= rest._id %>/comments" method="POST">
+                                            <textarea placeholder="Write your comment here!" class="pb-cmnt-textarea" name="comment"></textarea>
+                                            <button class="btn btn-primary pull-right" type="submit" style="display: block;">Share</button>
+                                        </form>
+                                    </div>
+                </diV>
+
+            </div>
+
+        </div>
+    </div>
+
+    <%- include('partials/footer'); -%>

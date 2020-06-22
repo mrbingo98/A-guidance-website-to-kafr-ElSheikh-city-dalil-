@@ -1,0 +1,39 @@
+<%- include('partials/header'); -%>
+
+    <style type="text/css">
+        .green {
+            display: flex;
+            min-width: 70%;
+            min-height: 70%;
+            justify-content: center;
+        }
+        
+        form {
+            margin-top: 20%;
+            margin-left: 20%;
+            width: 60%;
+            height: 60%;
+        }
+        
+        .post-text {
+            height: 20em;
+            width: 30em;
+            resize: none;
+            border-color: rgba(117, 117, 117, 0.68);
+            border-radius: 8px;
+            margin-bottom: 2em;
+        }
+        
+        .btn-outline-primary {
+            margin-left: 10em;
+            color: #09003d;
+        }
+    </style>
+    <div class="container green">
+        <form class="post-form" action="/<%= route %>/<%=id%>/post" method="POST">
+            <textarea id="text1" class="post-text" placeholder="Write your post here!!!" maxlength="600" minlength="70" name="postBody" required></textarea>
+            <button id="publish" type="submit" class="btn btn-outline-primary btn-lg">Publish</button>
+        </form>
+    </div>
+
+    <%- include('partials/footer'); -%>

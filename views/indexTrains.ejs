@@ -1,0 +1,60 @@
+<%- include('partials/header'); -%>
+    <div class="container green">
+        <h1 class="media-heading">Trains</h1>
+        <%if(isAuthenticated && currentUser.username === 'trainadmin'){%>
+            <a href="/trains/new">Add New Train</a>
+            <% } %>
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">NO</th>
+                            <th scope="col">Departure</th>
+                            <th scope="col">Arrival</th>
+                            <th scope="col">Dep Time</th>
+                            <th scope="col">Arr Time</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Price</th>
+                        </tr>
+                    </thead>
+                    <% Trains.forEach(function (train) { %>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                    <%= train["no"] %>
+                                </th>
+                                <td>
+                                    <%= train["departure"] %>
+                                </td>
+                                <td>
+                                    <%= train["arrival"] %>
+                                </td>
+                                <td>
+                                    <%= train["dep_time"] %>
+                                </td>
+                                <td>
+                                    <%= train["arr_time"] %>
+                                </td>
+                                <td>
+                                    <%= train["type"] %>
+                                </td>
+                                <td>
+                                    <%= train["price"] %>
+                                </td>
+                                <td>
+                                    <%if(isAuthenticated && currentUser.username === 'trainadmin'){%>
+                                        <form action="/trains/<%= train._id %>?_m=DELETE" method="POST">
+                                            <button class="btn btn-outline-danger" type="submit">Delete
+                                </button>
+                                        </form>
+                                </td>
+                                <td>
+                                    <a class="btn btn-outline-secondary" href="/trains/<%= train._id %>/edit">Edit
+                                </a>
+                                </td>
+                                <%}%>
+                            </tr>
+                        </tbody>
+                        <% }) %>
+                </table>
+    </div>
+    <%- include('partials/footer'); -%>

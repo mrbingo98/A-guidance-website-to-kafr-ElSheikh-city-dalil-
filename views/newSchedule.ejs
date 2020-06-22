@@ -1,0 +1,32 @@
+<%- include('partials/header'); -%>
+    <div class="container green">
+        <form action="/colleges/<%= col._id %>/schedule" method="POST" enctype="multipart/form-data">
+            <div class="form-row justify-center">
+                <label for="deptsselect">Departments</label>
+                <select name="dept" class="custom-select" id="deptsselect" required>
+                <% col.depts.forEach(function(dept){%>
+                    <option value="<%=dept._id%>">
+                        <%=dept.name%>
+                    </option>
+                <%}) %> 
+                
+            </select>
+            </div>
+            <div class="form-row justify-center">
+                <label for="schedule"> upload a schedule</label>
+                <input type="file" class="form-control-file" name="image" id="schedule" required>
+            </div>
+            <div class="form-row">
+                <label for="year">Year</label>
+                <input class="form-control" type="text" id="year" name="year" required>
+                <label for="semester">Semester</label>
+                <input class="form-control" type="text" id="semester" name="semester" required>
+                <label for="studyYear">Study Year</label>
+                <input class="form-control" type="text" id="studyYear" name="sYear" required>
+            </div>
+            <div class="form-row justify-center">
+                <button type="submit">Upload</button>
+            </div>
+        </form>
+    </div>
+    <%- include('partials/footer'); -%>

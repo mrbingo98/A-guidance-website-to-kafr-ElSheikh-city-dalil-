@@ -1,0 +1,123 @@
+<%- include('partials/header'); -%>
+    <style>
+        .btn {
+            padding: 0.07em 0.25em;
+            margin-left: 0.5em;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #cecece;
+        }
+        
+        .col8container {
+            border-left: solid rgba(255, 255, 255, 0.418) 1px;
+        }
+        
+        .delete {
+            margin: 0;
+        }
+        /* .media-body {
+            position: relative;
+        } */
+        
+        .media {
+            position: relative;
+            border-bottom-color: #636363;
+            border-bottom-style: solid;
+            border-right-color: #636363;
+            border-bottom-width: 1px;
+            border-right-width: 2px;
+            border-right-style: solid;
+            border-bottom-right-radius: 5px;
+            margin-top: 0px;
+            padding-top: 0;
+            margin-bottom: 1em;
+        }
+        
+        .form-inline {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+        }
+    </style>
+    <header>
+        <div class="container">
+            <h1 class="media-heading">
+                <%= col.name %>
+            </h1>
+        </div>
+    </header>
+    <div class="container green">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="thumbnail">
+                    <img src="..\<%= col.image %>" class="img-responsive col-md-11 rounded-border" alt="<%= col.name  %> Pic">
+                    <div class="caption-full">
+                        <p class="details">
+                            <%= col.details %>
+                        </p>
+                        <% if(isAuthenticated && currentUser.username === col.admin.username) {%>
+                            <a href="/colleges/<%= col._id %>/edit" class="btn btn-outline-secondary">
+                                Edit <%= col.name %> 
+                            </a>
+                            <%} %>
+                    </div>
+                    <div class="departments">
+                        <h3>Departments</h3>
+                        <ul>
+                            <% col.depts.forEach(function(dept) { %>
+                                <li>
+                                    <a href="/colleges/<%= col._id %>/departments/<%= dept._id %>">
+                                        <%= dept.name %>
+                                            <% if(isAuthenticated && currentUser.username === col.admin.username) {%>
+                                                <a href="/colleges/<%= col._id %>/departments/<%= dept._id %>/edit" class="btn btn-outline-secondary">
+                                                Edit
+                                                </a>
+                                                <%} %>
+                                    </a>
+                                </li>
+                                <%}) %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+
+                <% if(isAuthenticated && currentUser.username === col.admin.username) {%>
+                    <a href="/colleges/<%= col._id %>/post/new">
+                        <h3>Publish new post</h3>
+                    </a>
+                    <a href="/colleges/<%=col._id%>/schedule/new">
+                                Upload a schedule
+                            </a>
+                    <%} %>
+                        <div class="container col8container">
+                            <div id="special_map">
+                                <iframe src="<%= col.map %>" class="map" allowfullscreen="true" aria-hidden="false" tabindex=""></iframe>
+                            </div>
+                            <diV class="container post">
+                                <% col.posts.forEach(function(post) { %>
+                                    <div class="media">
+                                        <% if(isAuthenticated && currentUser.username === col.admin.username){%>
+                                            <form class="form-inline" action="/colleges/<%=col._id%>/post/<%=post._id%>?_m=DELETE" method="POST">
+                                                <a class="btn btn-outline-secondary delete" href="/colleges/<%=col._id%>/post/<%=post._id%>/edit" style="margin-right: 1em;">Edit</a>
+                                                <button class="btn btn-outline-danger delete" type="submit">Delete</button>
+
+                                            </form>
+                                            <%} %>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">
+                                                        <%= col.name %>
+                                                    </h4>
+                                                    <%= post.body %>
+                                                </div>
+                                    </div>
+                                    <%}) %>
+
+                            </diV>
+                        </div>
+            </div>
+        </div>
+    </div>
+    <%- include('partials/footer'); -%>

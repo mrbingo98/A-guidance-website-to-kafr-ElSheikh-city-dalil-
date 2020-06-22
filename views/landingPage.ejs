@@ -1,0 +1,31 @@
+<%- include('partials/header'); -%>
+    <style>
+        body {
+            background-image: url('/s1.jpg');
+            background-size: cover;
+        }
+        
+        .jumbotron {
+            padding: 1em 1em;
+            background-color: transparent;
+            color: #fff;
+            margin-top: 23%;
+        }
+    </style>
+    <div class="container green">
+        <div class="jumbotron justify-content-center" id="headerWelcome">
+            <h1 class="display-4" style="margin-left: 30%;">Welcome To Dalil</h1>
+            <p class="lead" style="margin-left: 18%;">The only guide to KFS University, your guide to all places within university area.</p>
+            <button id="mapTrigger" class="btn btn-outline-primary btn-lg" style="margin-left: 45%;">Show Map</button>
+        </div>
+        <div class="disabeled" id="mapContainer">
+            <div id="map"></div>
+            <script src="/frontjs/mapinit.js"></script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIzKl0ihHXQPc5lGcIq_PP-G75XXgZGJU&callback=initMap"></script>
+        </div>
+    </div>
+    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIzKl0ihHXQPc5lGcIq_PP-G75XXgZGJU&callback=initMap"></script> -->
+    <!-- </script> -->
+    <script async defer src="/frontjs/landinPage.js">
+    </script>
+    <%- include('partials/footer'); -%>

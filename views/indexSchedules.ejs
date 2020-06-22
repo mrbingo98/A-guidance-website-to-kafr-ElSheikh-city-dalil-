@@ -1,0 +1,32 @@
+<%- include('partials/header'); -%>
+    <div class="container green">
+        <h2 class="media-heading">
+            <%=dept.name%> Department Schedules
+        </h2>
+        <div class="album py-5">
+            <div class="container">
+                <div class="row">
+                    <% dept.schedules.forEach(function(schedule){%>
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow">
+                                <img class="card-img-top scheduleimg" id="<%= schedule._id %>" src="/<%=schedule.image%>" alt="<%= schedule.year %> <%= schedule.semester %>schedule">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <%= schedule.year %>
+                                            <%= schedule.semester %>
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="fullScreenImage('<%= schedule._id %>')" id="viewButton">View</button>
+                                        </div>
+                                        <small class="text-muted"> <%=schedule.studyyear%></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('partials/footer') -%>

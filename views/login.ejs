@@ -1,0 +1,29 @@
+<%- include('partials/header'); -%>
+    <div class="container green">
+        <div class="login-box" id="userLogin" style="top: 30%;">
+            <div class="group-button">
+                <h3>Login</h3>
+            </div>
+            <div id="userRegisteration">
+                <form action="/login" method="POST">
+                    <div class="user-box">
+                        <input type="text" name="username" required="">
+                        <label>Username</label>
+                    </div>
+                    <div class="user-box">
+                        <input type="password" name="password" required="">
+                        <label>Password</label>
+                    </div>
+
+                    <button class="submit" id="userSubmit" type="submit">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span> Submit
+                </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="http://127.0.0.1:8887/views/assets/js/register validation.js"></script>
+    <%- include('partials/footer'); -%>

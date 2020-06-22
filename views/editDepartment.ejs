@@ -1,0 +1,22 @@
+<%- include('partials/header'); -%>
+
+    <div class="container green">
+        <form action="/colleges/<%= id %>/departments/<%= dept._id %>?_m=PUT" method="POST">
+            <h3>Update
+                <%=dept.name%>
+            </h3>
+            <div class="form-row">
+                <label for="deptName">Name</label>
+                <input class="form-control" type="text" value="<%=dept.name%>" id="deptName" name="name" required>
+            </div>
+            <div class="form-row">
+                <label for="deptDetails">Details</label>
+                <input class="form-control" type="text" id="deptDetails" value="<%=dept.details%>" name="details" required>
+            </div>
+            <div class="form-row">
+                <button class="btn btn-primary" type="submit">Update</button>
+            </div>
+        </form>
+    </div>
+
+    <%- include('partials/footer') -%>

@@ -1,0 +1,16 @@
+<%- include('partials/header'); -%>
+
+    <style type="text/css">
+        .green {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+    <div class="container green">
+        <form class="post-form" action="/<%= route %>/<%=id%>/post/<%=post._id%>?_m=PUT" method="POST">
+            <textarea id="text1" class="post-text" placeholder="Write your post here!!!" maxlength="600" minlength="70" name="postBody" required><%= post.body %> </textarea>
+            <button id="publish" type="submit" class="btn btn-outline-primary btn-lg post-submit">Update</button>
+        </form>
+    </div>
+
+    <%- include('partials/footer'); -%>

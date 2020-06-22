@@ -1,0 +1,40 @@
+<%- include('partials/header'); -%>
+    <div class="container green">
+        <div class="login-box">
+            <h3>Edit Train No:
+                <%= tr.no %>
+            </h3>
+            <form action="/trains/<%= tr._id %>?_m=PUT" method="POST">
+                <div class="user-box">
+                    <input type="text" class="form-control" id="validationDefault01" name="train[departure]" value="<%= tr.departure %>" required>
+                    <label for="validationDefault01">Departure</label>
+                </div>
+                <div class="user-box">
+                    <input type="text" class="form-control" id="validationDefault02" name="train[arrival]" value="<%= tr.arrival %>" required>
+                    <label for="validationDefault02">Arrival</label>
+                </div>
+                <div class="user-box">
+                    <input type="text" class="form-control" aria-describedby="inputGroupPrepend2" name="train[no]" value="<%= tr.no %>" required>
+                    <label for="validationDefaultUsername">Train.no</label>
+                </div>
+                <div class="user-box">
+                    <input type="text" class="form-control" id="validationDefault03" name="train[dep_time]" value="<%= tr.dep_time %>" required>
+                    <label for="validationDefault03">Dep Time</label>
+                </div>
+                <div class="user-box">
+                    <input type="text" class="form-control" id="validationDefault03" name="train[arr_time]" value="<%= tr.arr_time %>" required>
+                    <label for="validationDefault03">Arr Time</label>
+                </div>
+                <div class="user-box">
+                    <input type="text" class="form-control" id="validationDefault03" name="train[type]" value="<%= tr.type %>" required>
+                    <label for="validationDefault03">Type</label>
+                </div>
+                <div class="user-box">
+                    <input type="text" class="form-control" id="validationDefault03" name="train[price]" value="<%= tr.price %>" required>
+                    <label for="validationDefault03">Price</label>
+                </div>
+                <button class="submit" style="display: block;" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <%- include('partials/footer'); -%>

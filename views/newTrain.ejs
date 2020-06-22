@@ -1,0 +1,39 @@
+<%- include('partials/header'); -%>
+
+    <div class="container green">
+        <div class="login-box">
+            <h3>Add Train</h3>
+            <form action="/trains" method="POST">
+                <div class="user-box">
+                    <input type="text" class="form-control" id="validationDefault01" name="departure" required>
+                    <label for="validationDefault01">Departure</label>
+                </div>
+                <div class="user-box">
+                    <input type="text" class="form-control" id="validationDefault02" name="arrival" required>
+                    <label for="validationDefault02">Arrival</label>
+                </div>
+                <div class="user-box">
+                    <input type="text" class="form-control" aria-describedby="inputGroupPrepend2" name="tno" required>
+                    <label for="validationDefaultUsername">Train.no</label>
+                </div>
+                <div class="user-box">
+                    <input type="text" class="form-control" id="validationDefault03" name="dTime" required>
+                    <label for="validationDefault03">Dep Time</label>
+                </div>
+                <div class="user-box">
+                    <input type="text" class="form-control" id="validationDefault03" name="aTime" required>
+                    <label for="validationDefault03">Arr Time</label>
+                </div>
+                <div class="user-box">
+                    <input type="text" class="form-control" id="validationDefault03" name="Type" required>
+                    <label for="validationDefault03">Type</label>
+                </div>
+                <div class="user-box">
+                    <input type="text" class="form-control" id="validationDefault03" name="Price" required>
+                    <label for="validationDefault03">Price</label>
+                </div>
+                <button class="submit" style="display: block;" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <%- include('partials/footer'); -%>

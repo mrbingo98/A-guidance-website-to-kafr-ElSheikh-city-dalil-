@@ -1,0 +1,40 @@
+<%- include('partials/header'); -%>
+
+    <div class="container green">
+        <div class="login-box">
+            <div id="restaurantRegisteration">
+                <h3>Add Restaurant</h3>
+                <form action="/restaurants" method="POST" enctype="multipart/form-data">
+                    <div class="user-box">
+                        <input type="text" class="form-control" id="validationDefault01" name="name" required>
+                        <label for="validationDefault01">Name</label>
+                    </div>
+                    <div class="user-box">
+                        <input type="number" class="form-control" id="validationDefault03" name="phone" required>
+                        <label for="validationDefault03">Phone</label>
+                    </div>
+                    <div class="user-box">
+                        <input type="number" class="form-control" id="validationDefault03" name="openTime" required>
+                        <label for="validationDefault03">Open Time</label>
+                    </div>
+                    <div class="user-box">
+                        <input type="number" class="form-control" id="validationDefault03" name="closeTime" required>
+                        <label for="validationDefault03">Close Time</label>
+                    </div>
+                    <div class="user-box">
+                        <input type="file" class="form-control" id="validationDefault03" name="image" required>
+                        <label for="validationDefault03">Image</label>
+                    </div>
+
+
+                    <button id="restaurantSubmit" class="submit" type="submit">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span> Submit
+            </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <%- include('partials/footer'); -%>

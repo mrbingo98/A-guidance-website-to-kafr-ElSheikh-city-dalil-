@@ -1,0 +1,70 @@
+<%- include('partials/header'); -%>
+
+    <div class="container green">
+        <div class="login-box">
+            <div id="userRegisteration">
+                <h3>Registeration</h3>
+                <form id="regForm" action="/register" method="POST">
+                    <div class="form-row">
+                        <div class="user-box">
+                            <input type="text" class="form-control" id="firstName" name="fname" required>
+                            <label for="firstName">First name</label>
+                        </div>
+                        <div class="user-box">
+                            <input type="text" class="form-control" id="lastName" name="lname" required>
+                            <label for="lastName">Last name</label>
+                        </div>
+                        <div class="user-box">
+                            <input type="text" class="form-control" id="username" aria-describedby="inputGroupPrepend3" name="username" required>
+                            <label for="username">Username</label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class=" user-box">
+                            <input type="text" class="form-control" name="phone" id="phone" required>
+                            <label for="phone">Phone</label>
+                        </div>
+                        <div class="user-box" id="passDiv">
+                            <input type="password" class="form-control" name="password" id="password">
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="user-box">
+                            <input type="email" class="form-control" id="email" name="email" required>
+                            <label for="email">E-mail</label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="user-box">
+                            <input type="date" name="bod" id="bod">
+                            <label for="bod">Birth of Date</label>
+                        </div>
+                    </div>
+                    <div class="radio">
+                        <h4>Sex</h4>
+                        <input type="radio" name="sex" value="male" id="male">
+                        <label for="male">Male</label>
+                        <br>
+                        <input type="radio" name="sex" value="female" id="female">
+                        <label for="female">Female</label>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
+                            <label class="form-check-label" for="invalidCheck3">
+                      Agree to terms and conditions
+                    </label>
+                        </div>
+                    </div>
+                    <button id="userSubmit" type="submit" class="submit">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span> Register</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <script src="http://127.0.0.1:8887/views/assets/js/register validation.js"></script>
+    <%- include('partials/footer'); -%>

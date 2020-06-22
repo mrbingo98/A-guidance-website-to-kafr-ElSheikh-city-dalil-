@@ -1,0 +1,27 @@
+<%- include('partials/header'); -%>
+
+    <div class="container green">
+        <h1>Update
+            <%= col.name %>
+        </h1>
+        <form action="/colleges/<%=col._id%>?_m=PUT" method="POST">
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">Name</label>
+                    <input type="text" class="form-control" id="validationDefault01" value="<%=col.name%>" name="name" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">Detailes</label>
+                    <textarea type="text" class="form-control" id="validationDefault02" value="<%= col.details %>" name="details" required></textarea>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">Map</label>
+                    <input type="text" class="form-control" id="validationDefault02" value="<%= col.map %>" name="map" required>
+                </div>
+            </div>
+            <button class="btn btn-primary" style="display: block;" type="submit">Submit</button>
+        </form>
+    </div>
+    <%- include('partials/footer'); -%>

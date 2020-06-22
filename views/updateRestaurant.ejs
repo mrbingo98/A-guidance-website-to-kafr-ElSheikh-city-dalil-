@@ -1,0 +1,36 @@
+<%- include('partials/header'); -%>
+
+    <div class="container green">
+        <div class="login-box">
+
+            <div>
+                <form action="/restaurants/<%= rest._id %>?_m=PUT" method="POST">
+                    <div class="user-box">
+                        <input type="text" class="form-control" id="validationDefault01" name="name" value="<%= rest.name %>" required>
+                        <label for="validationDefault01">Name</label>
+                    </div>
+                    <div class="user-box">
+                        <input type="number" class="form-control" id="validationDefault03" value="<%= rest.phone %>" name="phone" required>
+                        <label for="validationDefault03">Phone</label>
+                    </div>
+                    <div class="user-box">
+                        <input type="number" class="form-control" id="validationDefault03" value="<%= rest.openTime %>" name="openTime" required>
+                        <label for="validationDefault03">Open Time</label>
+                    </div>
+                    <div class="user-box">
+                        <input type="number" class="form-control" id="validationDefault03" value="<%= rest.closeTime %>" name="closeTime" required>
+                        <label for="validationDefault03">Close Time</label>
+                    </div>
+
+
+                    <button class="submit" type="submit">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span> Update
+                </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <%- include('partials/footer'); -%>

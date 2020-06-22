@@ -1,0 +1,24 @@
+<%- include('partials/header'); -%>
+    <style>
+        .login-box {
+            top: 20%;
+        }
+    </style>
+    <div class="container green">
+        <div class="login-box">
+            <form action="/colleges/<%= id %>/departments" method="POST">
+                <h3>Add Departments</h3>
+                <div class="user-box">
+                    <input class="form-control" type="text" id="deptName" name="name" required>
+                    <label for="deptName">Name</label>
+                </div>
+                <div class="user-box">
+                    <input class="form-control" type="text" id="deptDetails" name="details" required>
+                    <label for="deptDetails">Details</label>
+                </div>
+                <button class="submit" type="submit">Add</button>
+            </form>
+        </div>
+    </div>
+
+    <%- include('partials/footer') -%>
