@@ -17,73 +17,72 @@
         <h1 class="media-heading">Trains</h1>
         <%if(isAuthenticated && currentUser.username === 'trainadmin'){%>
             <a href="/trains/new">Add New Train</a>
-            <% } %>
+            <% }else{ %>
                 <a style="color: rgb(255, 255, 255);" href="/microbus">Microbus Station</a>
-                <div class="btn-group" role="group" style="float: right;">
-                    <button class="btn btn-default active" id="kafr">Kafr ElSheikh Train Station</button>
-                    <button class="btn btn-default" id="sakha">Sakh Train Station</button>
-                </div>
-                <div id="special_map" class="kafr">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3416.0123573794976!2d30.937202315122907!3d31.10938857443288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f7ab7faefce927%3A0x72c74ccb5da76450!2z2YXYrdi32Ycg2YLYt9in2LEg2YPZgdix2KfZhNi02YrYrtiMIEthZnIgRWwtU2hhaWtoIC0gVGFudGEsIFFpc20gS2FmciBFbC1TaGFpa2gsIEthZnIgQWwgU2hlaWtoLCBLYWZyIEVsIFNoZWlraCBHb3Zlcm5vcmF0ZQ!5e0!3m2!1sen!2seg!4v1592862206679!5m2!1sen!2seg"
-                        class="map" allowfullscreen="true" aria-hidden="false" tabindex=""></iframe>
-                </div>
-                <div id="special_map" class="sakha disabeled">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3416.0123573794976!2d30.937202315122907!3d31.10938857443288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f7ab7faefce927%3A0x72c74ccb5da76450!2z2YXYrdi32Ycg2YLYt9in2LEg2YPZgdix2KfZhNi02YrYrtiMIEthZnIgRWwtU2hhaWtoIC0gVGFudGEsIFFpc20gS2FmciBFbC1TaGFpa2gsIEthZnIgQWwgU2hlaWtoLCBLYWZyIEVsIFNoZWlraCBHb3Zlcm5vcmF0ZQ!5e0!3m2!1sen!2seg!4v1592862206679!5m2!1sen!2seg"
-                        class="map" allowfullscreen="true" aria-hidden="false" tabindex=""></iframe>
-                </div>
-                <table class="table table-dark">
-                    <thead>
-                        <tr>
-                            <th scope="col">NO</th>
-                            <th scope="col">Departure</th>
-                            <th scope="col">Arrival</th>
-                            <th scope="col">Dep Time</th>
-                            <th scope="col">Arr Time</th>
-                            <th scope="col">Type</th>
-                            <th scope="col">Price</th>
-                        </tr>
-                    </thead>
-                    <% Trains.forEach(function (train) { %>
-                        <tbody>
+                <%}%>
+                    <div class="btn-group" role="group" style="float: right;">
+                        <button class="btn btn-default active" id="kafrButton">Kafr ElSheikh Train Station</button>
+                        <button class="btn btn-default" id="sakhaButton">Sakh Train Station</button>
+                    </div>
+                    <div id="kafrMap" class="special_map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.390596444528!2d30.93937694158675!3d31.109528504214953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f7ab7faefce927%3A0x45b4d6f520a6e0ff!2z2YXYrdi32Kkg2YLYt9in2LEg2YPZgdixINin2YTYtNmK2K4!5e1!3m2!1sar!2seg!4v1592918607222!5m2!1sar!2seg"
+                            class="map" allowfullscreen="true" aria-hidden="false" tabindex=""></iframe>
+                    </div>
+                    <div id="sakhaMap" class="special_map disabeled">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1772.8937846475058!2d30.94576860568326!3d31.088353332905097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6f87d19e00fadff3!2z2YXYrdi32Kkg2LPYrtin!5e1!3m2!1sar!2seg!4v1592918461137!5m2!1sar!2seg"
+                            class="map" allowfullscreen="true" aria-hidden="false" tabindex=""></iframe>
+                    </div>
+                    <table class="table table-dark">
+                        <thead>
                             <tr>
-                                <th scope="row">
-                                    <%= train["no"] %>
-                                </th>
-                                <td>
-                                    <%= train["departure"] %>
-                                </td>
-                                <td>
-                                    <%= train["arrival"] %>
-                                </td>
-                                <td>
-                                    <%= train["dep_time"] %>
-                                </td>
-                                <td>
-                                    <%= train["arr_time"] %>
-                                </td>
-                                <td>
-                                    <%= train["type"] %>
-                                </td>
-                                <td>
-                                    <%= train["price"] %>
-                                </td>
-                                <td>
-                                    <%if(isAuthenticated && currentUser.username === 'trainadmin'){%>
-                                        <form action="/trains/<%= train._id %>?_m=DELETE" method="POST">
-                                            <button class="btn btn-outline-danger" type="submit">Delete
-                                </button>
-                                        </form>
-                                </td>
-                                <td>
-                                    <a class="btn btn-outline-secondary" href="/trains/<%= train._id %>/edit">Edit
-                                </a>
-                                </td>
-                                <%}%>
+                                <th scope="col">NO</th>
+                                <th scope="col">Departure</th>
+                                <th scope="col">Arrival</th>
+                                <th scope="col">Dep Time</th>
+                                <th scope="col">Arr Time</th>
+                                <th scope="col">Class</th>
+                                <th scope="col">Price</th>
                             </tr>
-                        </tbody>
-                        <% }) %>
-                </table>
+                        </thead>
+                        <% Trains.forEach(function (train) { %>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        <%= train["no"] %>
+                                    </th>
+                                    <td>
+                                        <%= train["departure"] %>
+                                    </td>
+                                    <td>
+                                        <%= train["arrival"] %>
+                                    </td>
+                                    <td>
+                                        <%= train["dep_time"] %>
+                                    </td>
+                                    <td>
+                                        <%= train["arr_time"] %>
+                                    </td>
+                                    <td>
+                                        <%= train["type"] %>
+                                    </td>
+                                    <td>
+                                        <%= train["price"] %>
+                                    </td>
+                                    <td>
+                                        <%if(isAuthenticated && currentUser.username === 'trainadmin'){%>
+                                            <form action="/trains/<%= train._id %>?_m=DELETE" method="POST">
+                                                <button class="btn btn-outline-danger" type="submit">Delete
+                                </button>
+                                            </form>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-outline-secondary" href="/trains/<%= train._id %>/edit">Edit
+                                </a>
+                                    </td>
+                                    <%}%>
+                                </tr>
+                            </tbody>
+                            <% }) %>
+                    </table>
     </div>
-    <script async defer src="/frontjs/trainMaps.js">
-    </script>
     <%- include('partials/footer'); -%>

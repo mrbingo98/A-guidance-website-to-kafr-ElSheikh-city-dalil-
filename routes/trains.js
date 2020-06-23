@@ -93,7 +93,7 @@ router.delete('/:id', checkTrainAdmin(), function(req, res) {
 function checkTrainAdmin() {
     return (req, res, next) => {
         if (req.isAuthenticated()) {
-            if (req.user.username === 'trainadmin') {
+            if (!req.user.username === 'trainadmin') {
                 req.flash('error', 'You are not allowed to modify any trains.')
                 res.redirect('/trains')
             } else {

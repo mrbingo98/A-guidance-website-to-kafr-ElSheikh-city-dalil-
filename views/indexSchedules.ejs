@@ -1,8 +1,14 @@
 <%- include('partials/header'); -%>
     <div class="container green">
         <h2 class="media-heading">
-            <%=dept.name%> Department Schedules
+            <%=dept.name%> Department
         </h2>
+        <div>
+            <p class="details-dept">
+                <%= dept.details %>
+            </p>
+
+        </div>
         <div class="album py-5">
             <div class="container">
                 <div class="row">
@@ -17,7 +23,10 @@
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="fullScreenImage('<%= schedule._id %>')" id="viewButton">View</button>
+                                            <% if(isAuthenticated && currentUser.username === username) {%>
+                                                <form action="/colleges/<%= id %>/schedule/<%= schedule._id %>?_m=DELETE" method="POST"><button class="btn btn-sm btn-outline-danger" type="submit">Delete</button></form>
+                                                <%} %>
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="fullScreenImage('<%= schedule._id %>')" id="viewButton">View</button>
                                         </div>
                                         <small class="text-muted"> <%=schedule.studyyear%></small>
                                     </div>

@@ -90,7 +90,7 @@ footer {
     /* The width is the width of the web page */
 }
 
-#special_map {
+.special_map {
     height: 450px;
     width: 100%;
     margin: 0;
@@ -218,8 +218,26 @@ footer {
     resize: none;
 }
 
+.details-dept {
+    color: #e4fffd;
+    text-align: right;
+    direction: rtl;
+    margin: 2% 15%;
+    white-space: pre-line;
+}
 
-/* @media (max-width: 800px) {
+#deptDetails {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    resize: none;
+    border-radius: 5px;
+    direction: rtl;
+    white-space: pre-line
+}
+
+@media (max-width: 800px) {
     .green {
         padding: 0;
         margin: 0;
@@ -231,4 +249,4 @@ footer {
         padding: 0;
         margin: 0;
     }
-} */
+}

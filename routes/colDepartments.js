@@ -20,7 +20,7 @@ router.post('/:id/departments', middelware.checkCollegeAdmin(), (req, res) => {
                 } else {
                     foundCol.depts.push(createdDept)
                     foundCol.save()
-                    req.flash('success', 'Departments has been successfully added. You can add another deprtments. Or go to coolege page <a href="/colleges/">here</a>')
+                    req.flash('success', 'Departments has been successfully added. You can add another deprtments. Or go to college page <a href="/colleges/">here</a>')
                     res.redirect('/colleges/' + colId + '/departments/new')
                 }
             })
@@ -33,14 +33,22 @@ router.get('/:id/departments/new', middelware.checkCollegeAdmin(), (req, res) =>
 })
 
 router.get('/:id/departments/:deptid', (req, res) => {
-    depts.findById(req.params.deptid).populate('schedules').exec(function(err, found) {
+    college.findById(req.params.id, (err, foundcoll) => {
         if (err) {
             req.flash('error', 'Somthing went wrong. Please try again.')
             res.redirect('/colleges/' + req.params.id)
         } else {
-            res.render('indexSchedules', { dept: found })
+            depts.findById(req.params.deptid).populate('schedules').exec(function(err, found) {
+                if (err) {
+                    req.flash('error', 'Somthing went wrong. Please try again.')
+                    res.redirect('/colleges/' + req.params.id)
+                } else {
+                    res.render('indexSchedules', { dept: found, username: foundcoll.admin.username, id: foundcoll._id })
+                }
+            })
         }
     })
+
 })
 router.get('/:id/departments/:deptid/edit', middelware.checkCollegeAdmin(), (req, res) => {
     const id = req.params.deptid,

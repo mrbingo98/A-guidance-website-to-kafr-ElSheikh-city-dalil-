@@ -99,6 +99,20 @@ router.delete('/:id', middelware.checkRestaurantOwner(), function(req, res) {
     })
 
 })
+router.post('/:id/menu', upload.single('menue'), middelware.checkRestaurantOwner(), (req, res) => {
+    const rid = req.params.id,
+        menu = req.file.path;
+    restaurant.findById(rid, (err, found) => {
+        if (err) {
+            req.flash('error', 'Somthing went wrong. Please try again later.')
+            res.redirect('/restaurants/' + rid)
+        } else {
+            found.menu = menu;
+            found.save()
+            res.redirect('/restaurants/' + rid)
+        }
+    })
+})
 
 router.get('/:id/post/new', middelware.checkRestaurantOwner(), (req, res) => {
     const restID = req.params.id

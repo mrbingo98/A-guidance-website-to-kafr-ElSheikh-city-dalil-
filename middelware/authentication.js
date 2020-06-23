@@ -1,11 +1,13 @@
+require('dotenv').config()
 const user = require('../models/user'),
     token = require('../models/token'),
     bcrypt = require('bcrypt'),
     crypto = require('crypto'),
     sgm = require('@sendgrid/mail'),
+    sender = process.env.email,
     middelwareObject = {}
 
-
+sgm.setApiKey(process.env.key)
 middelwareObject.authenticationMiddleware = function() {
     return (req, res, next) => {
         console.log(`req.session.passport.user: ${JSON.stringify(req.session.passport)}`);
@@ -28,10 +30,10 @@ middelwareObject.resendTokenPost = function() {
                         if (err) { req.flash('error', 'Something went wrong, please try agin'); return res.status(500).redirect('/register'); } else {
                             const msg = {
                                 to: found.email,
-                                from: "mrbingo5.98@outlook.com",
+                                from: sender,
                                 subject: 'Dalil Account Verification',
                                 text: 'Hello ' + found.fname + ',\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + created.token + '.\n',
-                                html: '<h1 style="color:gray">Hello ' + found.fname + '<h1>\n\n' + '<p style="color:gray;">Please verify your account by clicking the button: \n<form target="_blank" action="http:\/\/' + req.headers.host + '\/confirmation\/' + created.token + '" method="POST"><button type="submit" style="background-color:#0009f2;">Confirm your e-mail</button></form>.\n'
+                                html: '<h1 style="color:gray">Hello ' + found.fname + '<h1>\n\n' + '<p style="color:gray;">Please verify your account by clicking the button: \n<form target="_blank" action="http:\/\/' + req.headers.host + '\/confirmation\/' + created.token + '" method="POST"><button type="submit" style="color:#007bff;border-color:#007bff;text-align:center;background-color:transparent;border:1px solid;font-size:1.25rem;border-radius:0.3rem;padding:0.3em;">Confirm</button></form>.\n'
                             }
                             return sgm.send(msg).then(() => {
                                 req.flash('success', 'A verification email has been sent to ' + found.email + '.');
@@ -118,10 +120,10 @@ middelwareObject.registeration = function() {
                                     if (err) { req.flash('error', 'Something went wrong, please try agin'); return res.status(500).redirect('/register'); } else {
                                         const msg = {
                                             to: newlyCreated.email,
-                                            from: "mrbingo5.98@outlook.com",
+                                            from: sender,
                                             subject: 'Dalil Account Verification',
                                             text: 'Hello ' + newlyCreated.fname + ',\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + created.token + '.\n',
-                                            html: '<h1 style="color:gray">Hello ' + newlyCreated.fname + '<h1>\n\n' + '<p style="color:gray;">Please verify your account by clicking the button: \n<form target="_blank" action="http:\/\/' + req.headers.host + '\/confirmation\/' + created.token + '" method="POST"><button type="submit" style="background-color:#0009f2;">Confirm your e-mail</button></form>.\n'
+                                            html: '<h1 style="color:gray">Hello ' + newlyCreated.fname + '<h1>\n\n' + '<p style="color:gray;">Please verify your account by clicking the button: \n<form target="_blank" action="http:\/\/' + req.headers.host + '\/confirmation\/' + created.token + '" method="POST"><button type="submit" style="color:#007bff;border-color:#007bff;text-align:center;background-color:transparent;border:1px solid;font-size:1.25rem;border-radius:0.3rem;padding:0.3em;">Confirm</button></form>.\n'
                                         }
                                         return sgm.send(msg).then(() => {
                                             req.flash('success', 'A verification email has been sent to ' + newlyCreated.email + '.');

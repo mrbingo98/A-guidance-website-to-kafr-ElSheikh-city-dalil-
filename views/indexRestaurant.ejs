@@ -17,6 +17,32 @@
             position: relative;
         } */
         
+        input[type="file"] {
+            display: none;
+        }
+        
+        .custom-file-upload:hover {
+            border: 1px solid #ffffff;
+            background-color: #ffffff;
+            border-radius: 5px;
+            display: inline-block;
+            color: #000000;
+            padding: 0.2em;
+            margin: 1em;
+            cursor: pointer;
+        }
+        
+        .custom-file-upload {
+            border: 1px solid #d4d4d4;
+            border-radius: 5px;
+            display: inline-block;
+            background-color: #d4d4d4;
+            color: #303030;
+            padding: 0.2em;
+            margin: 1em;
+            cursor: pointer;
+        }
+        
         .media {
             color: rgb(221, 221, 221);
             position: relative;
@@ -62,14 +88,21 @@
                     <% if(isAuthenticated && currentUser.username === rest.owner.username) {%>
 
                         <form style="margin-bottom: .5em;" action="/restaurants/<%= rest._id %>?_m=DELETE" method="POST">
-                            <button class="btn btn-outline-danger" style="padding: 0.25em;">
+                            <button class="btn btn-danger" style="padding: 0.25em;">
                             Delete <%= rest.name %> 
                         </button>
                         </form>
                         <form action="/restaurants/<%= rest._id %>/edit" method="GET">
-                            <button class="btn btn-outline-secondary" style="padding: 0.25em;">
+                            <button class="btn btn-secondary" style="padding: 0.25em;">
                             Edit <%= rest.name %> 
                         </button>
+                        </form>
+                        <form action="/restaurants/<%= rest._id %>/menu" method="POST" enctype="multipart/form-data">
+                            <label class="custom-file-upload">
+                                <input type="file" name="menue" required/>
+                                Upload Menu
+                            </label>
+                            <input type="submit" class="btn btn-primary" value="Save Menu" />
                         </form>
                         <%} %>
 
@@ -104,12 +137,14 @@
                                 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d27325.3511593924!2d30.9694773!3d31.1189335!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x70cf36059a8b199e!2z2YXYt9i52YUg2YPYtNix2Ykg2KfZhNiy2LnZitmF!5e0!3m2!1sen!2seg!4v1591042681766!5m2!1sen!2seg"
                                     class="map" allowfullscreen="true" aria-hidden="false" tabindex=""></iframe>
                             </div>
+                            <div class="thumbnail" style="margin: 1em 0;">
+                                <img src="..\<%= rest.menu %>" class="img-responsive col-md-11 rounded-border">
+                            </div>
                             <% rest.comments.forEach(function(comment) { %>
                                 <div class="media">
                                     <% if(isAuthenticated && currentUser.username === comment.auther.username){%>
                                         <form class="form-inline" action="/restaurants/<%=rest._id%>/comments/<%=comment._id%>?_m=DELETE" method="POST">
                                             <button class="btn btn-outline-danger delete" type="submit">Delete</button>
-                                            <!-- <i class="fa fa-trash"></i> -->
                                         </form>
                                         <%} %>
                                             <div class="media-body">

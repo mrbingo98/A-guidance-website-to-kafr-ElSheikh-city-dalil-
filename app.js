@@ -1,12 +1,8 @@
-const e = require('express');
-const { use } = require('passport');
-
 require('dotenv').config()
 const express = require('express'),
     app = express(),
-    mongoose = require('mongoose'),
-    path = require('path'),
-    //--------------requireng Routes--------------//
+    //--------------requiring Routes--------------//
+    staticRoutes = require('./routes/staticRoutes'),
     trainRoute = require('./routes/trains'),
     restaurantRoute = require('./routes/restaurants'),
     restComments = require('./routes/restComments'),
@@ -16,6 +12,8 @@ const express = require('express'),
     colPostRoute = require('./routes/collegePosts'),
     colDepartments = require('./routes/colDepartments'),
     colSchedule = require('./routes/colSchedule'),
+    //------------requiring Packeges-----------------------//
+    mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
     mo = require('method-override'),
     multer = require('multer'),
@@ -23,12 +21,12 @@ const express = require('express'),
     flash = require('connect-flash'),
     cookieParser = require('cookie-parser'),
     session = require('express-session'),
-    user = require('./models/user'),
     passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
     MongoStore = require('connect-mongo')(session),
-    //-------------------multer storage and upload-------------//
-
+    //-----------------requiring user mongoose model------------//
+    user = require('./models/user'),
+    //-------------------defining multer storage and upload-------------//
     storage = multer.diskStorage({
         destination: function(req, file, cb) {
             cb(null, './uploads/');
@@ -43,12 +41,11 @@ upload = multer({ storage: storage }),
 mongoose.connect(process.env.mongoConnectURL, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }).then(() => {
     console.log("mongodb is connected");
 }).catch((error) => {
-    console.log("mondb not connected");
-    console.log(error);
+    throw (error)
 });
+//-------------------- set view engine to ejs -----------------------//
 app.set('view engine', 'ejs')
-    //-------------------app.use statements-----------------------//
-
+    //-------------------app.use static folders-----------------------//
 app.use(express.static('public'))
 app.use('/uploads', express.static('uploads'))
     //------------------Using body-parser--------------------------//
@@ -56,8 +53,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
     //---------------------Using method-override-----------------//
 app.use(mo('_m'))
-
-//-----------------session-------------------------//
+    //-----------------Using sessions and flash messages-------------------------//
 app.use(cookieParser())
 app.use(flash())
 app.use(session({
@@ -70,16 +66,16 @@ app.use(session({
         autoRemove: 'native'
     })
 }));
-
 //-------------------------Pasport Configration---------------------//
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy({ passReqToCallback: true }, async function(req, username, password, done) {
-    user.findOne({ username: username } || { email: username }, async function(err, user) {
+    user.findOne({ username: username }, async function(err, user) {
         if (err) { return done(err); }
         if (!user) {
             console.log("user not found")
             return done(null, false, req.flash("error", "Incorrect username."));
+
 
         }
         if (await bcrypt.compare(password, user.password)) {
@@ -96,14 +92,12 @@ passport.use(new LocalStrategy({ passReqToCallback: true }, async function(req, 
 passport.serializeUser(function(userID, done) {
     done(null, userID);
 });
-
 passport.deserializeUser(function(userID, done) {
     user.findById(userID, function(err, user) {
         done(err, user);
     });
 });
 //--------------------localaize variables--------------------//
-
 app.use((req, res, next) => {
     if (req.isAuthenticated()) {
         res.locals.currentUser = req.user;
@@ -115,29 +109,13 @@ app.use((req, res, next) => {
 
 })
 app.use((req, res, next) => {
-    res.locals.isAuthenticated = req.isAuthenticated();
-    res.locals.error = req.flash('error') || null;
-    res.locals.success = req.flash('success') || null;
-    next();
-})
-
-//---------------------routes-------------------------//
-app.get('/', (req, res) => {
-    res.render('landingPage')
-})
-app.get('/contact', (req, res) => {
-    res.render('contactUs')
-})
-app.get('/about', (req, res) => {
-    res.render('about')
-})
-app.get('/studenthousing', (req, res) => {
-    res.render('studentHousing')
-})
-app.get('/microbus', (req, res) => {
-        res.render('microbus')
+        res.locals.isAuthenticated = req.isAuthenticated();
+        res.locals.error = req.flash('error') || null;
+        res.locals.success = req.flash('success') || null;
+        next();
     })
     //------------------Using Routes---------------------------//
+app.use(staticRoutes)
 app.use('/trains', trainRoute)
 app.use('/restaurants', restaurantRoute)
 app.use('/restaurants', restComments)

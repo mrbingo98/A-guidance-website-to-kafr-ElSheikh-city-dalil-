@@ -1,7 +1,7 @@
-let kafrMap = document.getElementsByClassName('kafr'),
-    sakhaMap = document.getElementsByClassName('sakha'),
-    kafrButton = document.getElementById('kafr'),
-    sakhaButton = document.getElementById('sakha')
+let kafrMap = document.getElementById('kafrMap'),
+    sakhaMap = document.getElementById('sakhaMap'),
+    kafrButton = document.getElementById('kafrButton'),
+    sakhaButton = document.getElementById('sakhaButton')
 sakhaButton.addEventListener('click', () => {
     sakhaButton.classList.add('active')
     kafrButton.classList.remove('active')

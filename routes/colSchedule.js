@@ -43,4 +43,17 @@ router.post('/:id/schedule', upload.single('image'), middelware.checkCollegeAdmi
         }
     })
 })
+router.delete('/:id/schedule/:sid', middelware.checkCollegeAdmin(), (req, res) => {
+    const cid = req.params.id,
+        sid = req.params.sid
+    schedule.findByIdAndRemove(sid, (err) => {
+        if (err) {
+            req.flash('error', 'Schedule not deleted')
+            res.redirect('/colleges/' + cid)
+        } else {
+            req.flash('success', 'Schedule deleted')
+            res.redirect('/colleges/' + cid)
+        }
+    })
+})
 module.exports = router;

@@ -1,10 +1,8 @@
-require('dotenv').config()
 const express = require('express'),
     router = express.Router(),
     passport = require('passport'),
-    sgm = require('@sendgrid/mail'),
     middelware = require('../middelware/authentication')
-sgm.setApiKey(process.env.key)
+
 
 router.post('/confirmation/:token', middelware.confirmationPost(), function(req, res) {});
 router.post('/resend/:id', middelware.resendTokenPost(), function(req, res) {});
