@@ -1,0 +1,36 @@
+.d-md-block {
+    color: #ffffb8;
+    text-align: center;
+    background-color: rgba(69, 67, 69, 0.507);
+    border-radius: 5px;
+}
+
+.dalil-about {
+    background-color: rgba(69, 67, 69, 0.707);
+    border-radius: 5px;
+}
+
+@media(max-width:800px) {
+    .mr,
+    .mr h1,
+    .mr h5 {
+        display: inherit !important;
+        font-size: 1rem;
+        font-weight: 400;
+        background-color: transparent;
+        line-height: 0.6rem;
+    }
+}
+
+.about {
+    margin: 3% 0;
+    text-align: right;
+    color: #cc9031;
+}
+
+.about p {
+    margin-left: 20%;
+    max-width: 60%;
+    direction: rtl;
+    text-align: right;
+}
