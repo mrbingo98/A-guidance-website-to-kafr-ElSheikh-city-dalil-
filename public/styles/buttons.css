@@ -7,3 +7,15 @@
     margin-left: 40%;
     color: #09003d;
 }
+
+.btn-outline-primary {
+    color: #f0e740;
+    border-color: #f0e740;
+}
+
+.btn-outline-primary:hover {
+    color: #f0e740;
+    border-color: #080014;
+    box-shadow: 0 0 5px #f0e740, 0 0 5px #f0e740;
+    background-color: #080014;
+}

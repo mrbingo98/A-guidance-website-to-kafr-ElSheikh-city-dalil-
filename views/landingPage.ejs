@@ -8,7 +8,7 @@
         .jumbotron {
             padding: 1em 1em;
             background-color: transparent;
-            color: rgb(70, 70, 70);
+            color: #080014;
             margin-top: 15%;
         }
         
@@ -20,15 +20,16 @@
             font-weight: 500;
         }
         
-        .btn-lg {
-            padding: 0.3em;
+        .btn-outline-primary {
+            border-color: #080014;
+            color: #080014;
         }
     </style>
-    <div class="container green">
+    <div class="container">
         <div class="jumbotron justify-content-center" id="headerWelcome">
             <h1 class="display-4" style="margin-left: 30%;">Welcome To Dalil</h1>
             <p class="lead" style="margin-left: 18%;">The only guide to KFS University, your guide to all places within university area.</p>
-            <button id="mapTrigger" class="btn btn-outline-primary btn-lg" style="margin-left: 45%;">Show Map</button>
+            <button id="mapTrigger" class="btn btn-outline-primary btn-lg" style="margin-left: 45%;padding: 0.3em;">Show Map</button>
         </div>
         <div class="disabeled" id="mapContainer">
             <div id="map"></div>
