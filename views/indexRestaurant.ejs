@@ -77,13 +77,18 @@
                 <div class="thumbnail">
                     <img src="..\<%= rest.image %>" class="img-responsive col-md-11 rounded-border" alt="<%= rest.name  %> Pic">
                     <div class="caption-full">
-                        <p class="pull-right">Open from
-                            <%= rest.openTime %> To
-                                <%= rest.closeTime %>.</p>
-                        <p class="phone">
-                            <span>PNumber: </span>
-                            <%= rest.phone %>
-                        </p>
+                        <%if(rest["openTime"] = rest["closeTime"]){%>
+                            <p class="pull-right">Open from
+                                <%= rest["openTime"] %> To
+                                    <%= rest["closeTime"] %>
+                            </p>
+                            <%}else{%>
+                                <p class="pull-right">Open all day</p>
+                                <%}%>
+                                    <p class="phone">
+                                        <span>PNumber: </span>
+                                        <%= rest.phone %>
+                                    </p>
                     </div>
                     <% if(isAuthenticated && currentUser.username === rest.owner.username) {%>
 

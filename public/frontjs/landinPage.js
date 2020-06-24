@@ -6,7 +6,7 @@ function doSlideshow() {
     if (nextimage >= images.length) { nextimage = 0; }
     $('body')
         .css('background-image', 'url("' + images[nextimage++] + '")').css('background-size', 'cover')
-        .fadeIn(500, function() {
+        .fadeIn(1000, function() {
             setTimeout(doSlideshow, 4000);
         });
 }

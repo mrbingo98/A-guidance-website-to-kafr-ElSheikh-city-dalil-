@@ -1,48 +1,4 @@
 <%- include('partials/header'); -%>
-    <style>
-        .card-custom {
-            min-height: 15em;
-        }
-        
-        .card-img-top {
-            width: 100%;
-            height: 100%;
-        }
-        
-        .btn-outline-secondary {
-            color: #000030;
-        }
-        
-        .text-hover {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding-top: 3em;
-            height: 100%;
-            width: 100%;
-            opacity: 0;
-            transition: .5s ease;
-            background-color: rgba(3, 232, 244, 0.685);
-        }
-        
-        .card-custom:hover .text-hover {
-            opacity: 1;
-        }
-        
-        .text-hover {
-            color: white;
-            font-size: 20px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            -webkit-transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
-    </style>
     <div class="container green">
         <div class="album py-5">
             <div class="container">
@@ -52,18 +8,12 @@
                             <div class="card sm-6 mb-4 box-shadow card-custom">
                                 <img src="/<%= college.image %>" class="card-img-top" alt="<%= college[" name "] %> Pic">
                                 <div class="card-body">
-                                    <h5 class="card-title">
-                                        <%= college["name"] %>
-                                    </h5>
-                                    <div class="text-hover">
-                                        <p class="card-text">
-                                            <%= college["details"] %>.</p>
-                                        <a href="/colleges/<%= college._id %> " class="btn btn-sm btn-outline-secondary" role="button" id="viewButton">View</a>
-                                    </div>
+                                    <p class="card-text">
+                                        <%= college["details"] %>.</p>
+                                    <a href="/colleges/<%= college._id %> " class="btn btn-sm btn-outline-secondary" role="button" id="viewButton">View</a>
                                 </div>
                             </div>
                         </div>
-
                         <% }) %>
                 </div>
             </div>

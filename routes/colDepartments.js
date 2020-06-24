@@ -32,7 +32,7 @@ router.get('/:id/departments/new', middelware.checkCollegeAdmin(), (req, res) =>
     res.render('newDepartments', { id: req.params.id })
 })
 
-router.get('/:id/departments/:deptid', (req, res) => {
+router.get('/:id/departments/:deptid', middelware.authenticationMiddleware(), (req, res) => {
     college.findById(req.params.id, (err, foundcoll) => {
         if (err) {
             req.flash('error', 'Somthing went wrong. Please try again.')

@@ -1,48 +1,5 @@
 <%- include('partials/header'); -%>
-    <style>
-        .card-custom {
-            min-height: 15em;
-        }
-        
-        .card-img-top {
-            width: 100%;
-            height: 100%;
-        }
-        
-        .btn-outline-secondary {
-            color: #000030;
-        }
-        
-        .text-hover {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding-top: 3em;
-            height: 100%;
-            width: 100%;
-            opacity: 0;
-            transition: .5s ease;
-            background-color: rgba(3, 232, 244, 0.685);
-        }
-        
-        .card-custom:hover .text-hover {
-            opacity: 1;
-        }
-        
-        .text-hover {
-            color: white;
-            font-size: 20px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            -webkit-transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
-    </style>
+
     <div class="container green">
         <a href="/restaurants/new">Add New Restaurant</a>
         <div class="album py-5">
@@ -55,17 +12,19 @@
                                 <div class="card-body">
                                     <h5 class="card-title">
                                         <%= restaurant["name"] %>
+                                            <a href="/restaurants/<%= restaurant._id %> " class="btn btn-sm btn-outline-secondary pull-right" role="button" id="viewButton">View</a>
                                     </h5>
-                                    <div class="text-hover">
-                                        <p class="card-text">
-                                            <%= restaurant["phone"] %>.</p>
-                                        <p class="card-text">
-                                            Open from
+                                    <p class="card-text pull-right">
+                                        <%= restaurant["phone"] %>
+                                    </p>
+                                    <%if(restaurant["openTime"] = restaurant["closeTime"]){%>
+                                        <p class="card-text">Open from
                                             <%= restaurant["openTime"] %> To
-                                                <%= restaurant["closeTime"] %>.</p>
-
-                                        <a href="/restaurants/<%= restaurant._id %> " class="btn btn-sm btn-outline-secondary" role="button" id="viewButton">View</a>
-                                    </div>
+                                                <%= restaurant["closeTime"] %>
+                                        </p>
+                                        <%}else{%>
+                                            <p class="card-text">Open all day</p>
+                                            <%}%>
                                 </div>
                             </div>
                         </div>
