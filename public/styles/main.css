@@ -93,6 +93,21 @@ ul li a:hover {
     background: #080014;
 }
 
+.dropdown:hover,
+.dropdown-toggle:hover {
+    color: #080014 !important;
+    background-color: #f0e740;
+    border-radius: 5px;
+}
+
+.dropdown-menu {
+    background-color: #080014;
+}
+
+.dropdown-item {
+    color: #f0e740;
+}
+
 footer {
     background-color: #080014;
     margin: 2% 0 0 0;

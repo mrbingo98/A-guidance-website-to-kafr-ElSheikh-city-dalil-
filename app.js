@@ -73,19 +73,16 @@ passport.use(new LocalStrategy({ passReqToCallback: true }, async function(req, 
     user.findOne({ username: username }, async function(err, user) {
         if (err) { return done(err); }
         if (!user) {
-            console.log("user not found")
             return done(null, false, req.flash("error", "Incorrect username."));
 
 
         }
         if (await bcrypt.compare(password, user.password)) {
-            if (!user.isVerified) return done(null, false, req.flash('error', 'Your account has not been verified. Check your email for our confirmation mail or click <form action="/resend/' + user._id + '" method="POST"><button type="submit" class="btn btn-outline-primary"> Resend</button></form> to resend it.'));
+            if (!user.isVerified) return done(null, false, req.flash('error', 'Your account has not been verified. Check your email for our confirmation mail or click <form style="display:inline;" action="/resend/' + user._id + '" method="POST"><button type="submit" class="btn btn-outline-primary" style="color:#080014;border-color:#080014;"> Resend</button></form> to resend it.'));
             else {
-                console.log("login success")
                 return done(null, user._id);
             }
         }
-        console.log("login fail")
         return done(null, false, req.flash('error', 'Incorrect password.'));
     });
 }))

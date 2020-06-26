@@ -18,10 +18,27 @@ html {
 }
 
 .login-box h3 {
-    margin: 0 0 5px;
+    margin: 0 0 1em;
     padding: 0;
     color: #ffffb8;
     text-align: center;
+}
+
+.login-box h6 {
+    margin: 0 0 1em;
+    padding: 0;
+    color: #ffffb8;
+    text-align: center;
+}
+
+.user-box a {
+    text-decoration: none;
+    color: #cc9031;
+}
+
+.user-box a:hover {
+    text-decoration: none;
+    color: #ffffb8;
 }
 
 .login-box .user-box {

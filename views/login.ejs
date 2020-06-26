@@ -1,9 +1,7 @@
 <%- include('partials/header'); -%>
     <div class="container green">
         <div class="login-box" id="userLogin" style="top: 30%;">
-            <div class="group-button">
-                <h3>Login</h3>
-            </div>
+            <h3>Login</h3>
             <div id="userRegisteration">
                 <form action="/login" method="POST">
                     <div class="user-box">
@@ -13,7 +11,9 @@
                     <div class="user-box">
                         <input type="password" name="password" required="">
                         <label>Password</label>
+                        <a href="/forget">Forget your password?</a>
                     </div>
+
 
                     <button class="submit" id="userSubmit" type="submit">
                     <span></span>

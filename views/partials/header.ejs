@@ -52,15 +52,24 @@
                         <a class="nav-link button hvr-bob hvr-radial-out" href="/about">About</a>
                     </li>
                     <% if(!isAuthenticated){%>
-                        <li class="nav-item">
-                            <a class="nav-link button hvr-bob hvr-radial-out" href="/login">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link button hvr-bob hvr-radial-out" href="/register">Register</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Login
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item hvr-radial-out" href="/login">Login</a>
+                                <a class="dropdown-item hvr-radial-out" href="/register">Register</a>
+                            </div>
                         </li>
                         <%} else{%>
-                            <li class="nav-item">
-                                <a class="nav-link button hvr-bob hvr-radial-out" href="/logout">Logout</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <%= currentUser.username %>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item hvr-radial-out" href="/editinfo">EditInfo</a>
+                                    <a class="dropdown-item hvr-radial-out" href="/logout">Logout</a>
+                                </div>
                             </li>
                             <%}%>
                 </ul>

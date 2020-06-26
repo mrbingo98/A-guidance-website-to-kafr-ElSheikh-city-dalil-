@@ -1,0 +1,18 @@
+<%- include('partials/header'); -%>
+    <div class="container green">
+        <div class="login-box" id="userLogin" style="top: 30%;">
+            <h6>Please type your account mail to receive a password reset mail</h6>
+            <div id="userRegisteration">
+                <form action="/forget" method="POST">
+                    <div class="user-box">
+                        <input type="text" name="email" required="">
+                        <label>E-mail</label>
+                    </div>
+                    <button class="submit" id="userSubmit" type="submit">Send 
+                </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="http://127.0.0.1:8887/views/assets/js/register validation.js"></script>
+    <%- include('partials/footer'); -%>
