@@ -1,4 +1,15 @@
 <%- include('partials/header'); -%>
+    <style>
+        #content {
+            height: 100px;
+            overflow: hidden;
+        }
+        
+        #content::after {
+            content: '.....';
+        }
+        /* a#showmore:visited + #content { height: auto; overflow: visible} */
+    </style>
     <div class="container green">
         <div class="album py-5">
             <div class="container">
@@ -8,7 +19,7 @@
                             <div class="card sm-6 mb-4 box-shadow card-custom">
                                 <img src="/<%= college.image %>" class="card-img-top" alt="<%= college[" name "] %> Pic">
                                 <div class="card-body">
-                                    <p class="card-text">
+                                    <p class="card-text" id="content">
                                         <%= college["details"] %>.</p>
                                     <a href="/colleges/<%= college._id %> " class="btn btn-sm btn-outline-secondary" role="button" id="viewButton">View</a>
                                 </div>

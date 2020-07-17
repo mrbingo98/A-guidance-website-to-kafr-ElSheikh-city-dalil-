@@ -10,8 +10,24 @@
             color: #cecece;
         }
         
+        #myBtn {
+            background-color: transparent;
+            color: #ffffb8;
+            border: solid 1px #cc9031;
+            border-radius: 5px;
+        }
+        
         .col8container {
             border-left: solid rgba(255, 255, 255, 0.418) 1px;
+        }
+        
+        #content {
+            height: 100px;
+            overflow: hidden;
+        }
+        
+        #dots {
+            display: inline;
         }
         
         .delete {
@@ -54,9 +70,10 @@
                 <div class="thumbnail">
                     <img src="..\<%= col.image %>" class="img-responsive col-md-11 rounded-border" alt="<%= col.name  %> Pic">
                     <div class="caption-full">
-                        <p class="details">
-                            <%= col.details %>
+                        <p class="details" id="content">
+                            <%= col.details %><span id="dots">...</span><span id="more"></span>
                         </p>
+                        <button onclick="myFunction()" id="myBtn">... Read more</button>
                         <% if(isAuthenticated && currentUser.username === col.admin.username) {%>
                             <a href="/colleges/<%= col._id %>/edit" class="btn btn-outline-secondary">
                                 Edit <%= col.name %> 
@@ -86,9 +103,9 @@
 
                 <% if(isAuthenticated && currentUser.username === col.admin.username) {%>
                     <a href="/colleges/<%= col._id %>/post/new">
-                        <h3>Publish new post</h3>
+                        <h3 class="post-link">Publish new post</h3>
                     </a>
-                    <a href="/colleges/<%=col._id%>/schedule/new">
+                    <a href="/colleges/<%=col._id%>/schedule/new" class="schedule-link">
                                 Upload a schedule
                             </a>
                     <%} %>
@@ -120,4 +137,25 @@
             </div>
         </div>
     </div>
+    <script>
+        function myFunction() {
+            var content = document.getElementById("content")
+            var dots = document.getElementById("dots");
+            var moreText = document.getElementById("more");
+            var btnText = document.getElementById("myBtn");
+
+            if (dots.style.display === "none") {
+                dots.style.display = "inline";
+                btnText.innerHTML = "... Read more";
+                moreText.style.display = "none";
+                content.style.height = "100px";
+            } else {
+                dots.style.display = "none";
+                btnText.innerHTML = "Read less";
+                moreText.style.display = "inline";
+                content.style.height = "auto";
+
+            }
+        }
+    </script>
     <%- include('partials/footer'); -%>

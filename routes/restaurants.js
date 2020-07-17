@@ -70,7 +70,8 @@ router.put('/:id', middelware.checkRestaurantOwner(), middelware.checkRestaurant
         phone = req.body.phone,
         openTime = req.body.openTime,
         closeTime = req.body.closeTime,
-        newdata = { name: name, phone: phone, openTime: openTime, closeTime: closeTime }
+        map = req.body.map,
+        newdata = { name: name, phone: phone, openTime: openTime, closeTime: closeTime, map: map }
     console.log(newdata)
     console.log(id)
     restaurant.findByIdAndUpdate(id, newdata, function(err, udatedRestaurant) {

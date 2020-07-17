@@ -1,8 +1,57 @@
 <%- include('partials/header'); -%>
     <style>
         body {
-            background-image: url('/s1.jpg');
+            width: 100vw;
+            height: 100vh;
+            background-position: center center;
             background-size: cover;
+            background-repeat: no-repeat;
+            backface-visibility: hidden;
+            transition: 0.6s ease;
+            /* animation: slideBG 8s ease infinite 3s;
+            animation-timing-function: ease;
+            transition-delay: 4s; */
+            background-image: url('/s1.jpg');
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        /* @keyframes slideBG {
+            0% {
+                background-image: url('/s1.jpg');
+            }
+            25% {
+                transition-delay: 3s;
+                background-image: url('/s2.jpg');
+            }
+            50% {
+                background-image: url('/s3.jpg');
+            }
+            75% {
+                background-image: url('/s4.jpg');
+            }
+            100% {
+                background-image: url('/s5.jpg');
+            }
+        } */
+        
+        @-webkit-keyframes fade {
+            from {
+                opacity: .4
+            }
+            to {
+                opacity: 1
+            }
+        }
+        
+        @keyframes fade {
+            from {
+                opacity: .4
+            }
+            to {
+                opacity: 1
+            }
         }
         
         .jumbotron {
@@ -25,7 +74,7 @@
             color: #080014;
         }
     </style>
-    <div class="container green">
+    <div class="slide-bg">
         <div class="jumbotron justify-content-center jumbotron-landing" id="headerWelcome">
             <h1 class="display-4" style="margin-left: 30%;">Welcome To Dalil</h1>
             <p class="lead" style="margin-left: 18%;">The only guide to KFS University, your guide to all places within university area.</p>

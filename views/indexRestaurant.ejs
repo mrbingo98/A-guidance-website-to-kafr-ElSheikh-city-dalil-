@@ -66,7 +66,7 @@
     </style>
     <header>
         <div class="container">
-            <h1 style="color: #c7d7fa;">
+            <h1>
                 <%=rest.name%>
             </h1>
         </div>
@@ -134,7 +134,7 @@
                 <diV class="container col8container" style="margin-bottom: 4em;">
                     <% if(isAuthenticated && currentUser.username === rest.owner.username) {%>
                         <a href="/restaurants/<%=rest._id%>/post/new">
-                            <h3>Publish new post</h3>
+                            <h3 class="post-link">Publish new post</h3>
                         </a>
                         <%} %>
 

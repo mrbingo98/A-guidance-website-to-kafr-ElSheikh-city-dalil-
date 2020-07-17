@@ -1,5 +1,12 @@
 <%- include('partials/header'); -%>
-
+    <style>
+        .user-box textarea {
+            width: 100%;
+            resize: none;
+            height: 200px;
+            text-align: right;
+        }
+    </style>
     <div class="container green">
         <div class="login-box">
             <div id="restaurantRegisteration">
@@ -20,6 +27,9 @@
                     <div class="user-box">
                         <input type="number" class="form-control" id="validationDefault03" name="closeTime" required>
                         <label for="validationDefault03">Close Time</label>
+                    </div>
+                    <div class="user-box">
+                        <textarea class="Details" cols="30" rows="10" name="map" required placeholder="Past your google map url here...."></textarea>
                     </div>
                     <div class="user-box">
                         <input type="file" class="form-control" id="validationDefault03" name="image" required>

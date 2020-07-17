@@ -3,6 +3,14 @@
         .login-box {
             top: 20%;
         }
+        
+        .user-box textarea {
+            width: 100%;
+            resize: none;
+            height: 200px;
+            text-align: right;
+            margin-bottom: 1em;
+        }
     </style>
     <div class="container green">
         <div class="login-box">
@@ -13,8 +21,7 @@
                     <label for="deptName">Name</label>
                 </div>
                 <div class="user-box">
-                    <input class="form-control" type="text" id="deptDetails" name="details" required>
-                    <label for="deptDetails">Details</label>
+                    <textarea class="Details" cols="30" rows="10" name="details" required placeholder="Write brief Details about department here..."></textarea>
                 </div>
                 <button class="submit" type="submit">Add</button>
             </form>

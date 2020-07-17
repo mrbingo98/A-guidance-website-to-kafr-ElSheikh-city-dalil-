@@ -1,10 +1,18 @@
 <%- include('partials/header'); -%>
-
+    <style>
+        .user-box textarea {
+            width: 100%;
+            resize: none;
+            height: 200px;
+            text-align: right;
+        }
+    </style>
     <div class="container green">
-        <h1>Update
-            <%= col.name %>
-        </h1>
+
         <div class="login-box">
+            <h3>Update
+                <%= col.name %>
+            </h3>
             <form action="/colleges/<%=col._id%>?_m=PUT" method="POST">
                 <div class="user-box">
                     <input type="text" class="form-control" id="validationDefault01" value="<%=col.name%>" name="name" required>

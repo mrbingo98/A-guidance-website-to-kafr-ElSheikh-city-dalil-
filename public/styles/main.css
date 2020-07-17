@@ -242,6 +242,10 @@ footer {
     color: #cc9031;
 }
 
+h1 {
+    color: #ffffb8;
+}
+
 .post {
     color: #ffffb8;
     margin-top: 2em;
@@ -249,6 +253,7 @@ footer {
 
 .media-heading {
     color: #ffffb8;
+    text-align: left;
 }
 
 .btn {
@@ -305,6 +310,28 @@ footer {
     direction: rtl;
     margin: 2% 15%;
     white-space: pre-line;
+}
+
+.media-body {
+    white-space: pre-line;
+    text-align: right;
+}
+
+.schedule-link,
+.post-link,
+.newRest {
+    color: #ffffb8;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.schedule-link:hover,
+.post-link:hover,
+.newRest:hover {
+    color: #f0e740;
+    text-decoration: none;
+    font-weight: 600;
 }
 
 #deptDetails {

@@ -1,5 +1,12 @@
 <%- include('partials/header'); -%>
-
+    <style>
+        .user-box textarea {
+            width: 100%;
+            resize: none;
+            height: 200px;
+            text-align: right;
+        }
+    </style>
     <div class="container green">
         <div class="login-box">
 
@@ -21,13 +28,12 @@
                         <input type="number" class="form-control" id="validationDefault03" value="<%= rest.closeTime %>" name="closeTime" required>
                         <label for="validationDefault03">Close Time</label>
                     </div>
+                    <div class="user-box">
+                        <textarea class="Details" cols="30" rows="10" name="map" required placeholder="Past your google map url here...."></textarea>
+                    </div>
 
 
-                    <button class="submit" type="submit">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span> Update
+                    <button class="submit" type="submit"> Update
                 </button>
                 </form>
             </div>
