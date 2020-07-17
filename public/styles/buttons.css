@@ -1,6 +1,6 @@
 .btn-outline-secondary {
-    color: #a7a7a7;
-    border-color: #a7a7a7;
+    color: #ffffb8;
+    border-color: #ffffb8;
 }
 
 .post-submit {
@@ -18,4 +18,50 @@
     border-color: #080014;
     box-shadow: 0 0 5px #f0e740, 0 0 5px #f0e740;
     background-color: #080014;
+}
+
+.deleteBtn {
+    background-color: transparent;
+    color: #cc9031;
+    border: #cc9031 solid 1px;
+    border-radius: 5px;
+}
+
+.deleteBtn:hover {
+    background-color: #cc9031;
+    color: #080014;
+    border: #080014 solid 1px;
+    border-radius: 5px;
+    font-weight: 500;
+    box-shadow: 0 0 5px #cc9031, 0 0 5px #cc9031;
+}
+
+.editBtn {
+    background-color: transparent;
+    color: #ffffb8;
+    border-radius: 5px;
+    border: #ffffb8 solid 1px;
+}
+
+.editBtn:hover {
+    background-color: #ffffb8;
+    color: #080014;
+    border-radius: 5px;
+    border: #080014 solid 1px;
+    font-weight: 500;
+    box-shadow: 0 0 5px #ffffb8, 0 0 5px #ffffb8;
+}
+
+.upload {
+    background-color: transparent !important;
+    color: #ffffb8 !important;
+    border: #ffffb8 solid 1px !important;
+}
+
+.upload:hover {
+    background-color: #ffffb8 !important;
+    color: #cc9031 !important;
+    border: #cc9031 solid 1px !important;
+    font-weight: 500;
+    box-shadow: 0 0 5px #ffffb8, 0 0 5px #ffffb8;
 }

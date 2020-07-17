@@ -93,21 +93,37 @@
                     <% if(isAuthenticated && currentUser.username === rest.owner.username) {%>
 
                         <form style="margin-bottom: .5em;" action="/restaurants/<%= rest._id %>?_m=DELETE" method="POST">
-                            <button class="btn btn-danger" style="padding: 0.25em;">
+                            <button class="btn deleteBtn" style="padding: 0.25em;">
                             Delete <%= rest.name %> 
                         </button>
                         </form>
                         <form action="/restaurants/<%= rest._id %>/edit" method="GET">
-                            <button class="btn btn-secondary" style="padding: 0.25em;">
+                            <button class="btn editBtn" style="padding: 0.25em;">
                             Edit <%= rest.name %> 
                         </button>
                         </form>
                         <form action="/restaurants/<%= rest._id %>/menu" method="POST" enctype="multipart/form-data">
-                            <label class="custom-file-upload">
-                                <input type="file" name="menue" required/>
+                            <label class="custom-file-upload upload">
+                                <input type="file" accept="image/*" onchange="loadFile(event)" name="menue" required/>
                                 Upload Menu
                             </label>
-                            <input type="submit" class="btn btn-primary" value="Save Menu" />
+                            <img id="output" />
+                            <script>
+                                var loadFile = function(event) {
+                                    var output = document.getElementById('output');
+                                    output.src = URL.createObjectURL(event.target.files[0]);
+                                    output.onload = function() {
+                                        URL.revokeObjectURL(output.src) // free memory
+                                    }
+                                    if (output = null) {
+                                        document.getElementById("submit-menu").classList.add("disabeled")
+
+                                    } else {
+                                        document.getElementById("submit-menu").classList.remove("disabeled")
+                                    }
+                                };
+                            </script>
+                            <input id="submit-menu" type="submit" class="submit disabeled" value="Save Menu" />
                         </form>
                         <%} %>
 
@@ -141,36 +157,38 @@
                             <div class="special_map">
                                 <iframe src="<%= rest.map %>" class="map" allowfullscreen="true" aria-hidden="false" tabindex=""></iframe>
                             </div>
-                            <div class="thumbnail" style="margin: 1em 0;">
-                                <img src="..\<%= rest.menu %>" class="img-responsive col-md-11 rounded-border">
-                            </div>
-                            <% rest.comments.forEach(function(comment) { %>
-                                <div class="media">
-                                    <% if(isAuthenticated && currentUser.username === comment.auther.username){%>
-                                        <form class="form-inline" action="/restaurants/<%=rest._id%>/comments/<%=comment._id%>?_m=DELETE" method="POST">
-                                            <button class="btn btn-outline-danger delete" type="submit">Delete</button>
-                                        </form>
-                                        <%} %>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">
-                                                    <%= comment.auther.username %>
-                                                </h4>
-
-
-                                                <p>
-                                                    <%= comment.text %>
-                                                </p>
-
-
-                                            </div>
+                            <% if(rest.menu){ %>
+                                <div class="thumbnail" style="margin: 1em 0;">
+                                    <img src="..\<%= rest.menu %>" class="img-responsive col-md-11 rounded-border">
                                 </div>
-                                <%}) %>
-                                    <div class="comment-box">
-                                        <form class="form-comment" action="/restaurants/<%= rest._id %>/comments" method="POST">
-                                            <textarea placeholder="Write your comment here!" class="pb-cmnt-textarea" name="comment"></textarea>
-                                            <button class="btn btn-primary pull-right" type="submit" style="display: block;">Share</button>
-                                        </form>
-                                    </div>
+                                <% } %>
+                                    <% rest.comments.forEach(function(comment) { %>
+                                        <div class="media">
+                                            <% if(isAuthenticated && currentUser.username === comment.auther.username){%>
+                                                <form class="form-inline" action="/restaurants/<%=rest._id%>/comments/<%=comment._id%>?_m=DELETE" method="POST">
+                                                    <button class="btn btn-outline-danger delete" type="submit">Delete</button>
+                                                </form>
+                                                <%} %>
+                                                    <div class="media-body">
+                                                        <h4 class="media-heading">
+                                                            <%= comment.auther.username %>
+                                                        </h4>
+
+
+                                                        <p>
+                                                            <%= comment.text %>
+                                                        </p>
+
+
+                                                    </div>
+                                        </div>
+                                        <%}) %>
+                                            <div class="comment-box">
+                                                <form class="form-comment" action="/restaurants/<%= rest._id %>/comments" method="POST">
+                                                    <textarea placeholder="Write your comment here!" class="pb-cmnt-textarea" name="comment"></textarea>
+                                                    <button class="btn btn-primary pull-right" type="submit" style="display: block;">Share</button>
+                                                </form>
+                                            </div>
                 </diV>
 
             </div>

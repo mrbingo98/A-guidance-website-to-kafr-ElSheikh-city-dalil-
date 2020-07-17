@@ -41,6 +41,11 @@ html {
     color: #ffffb8;
 }
 
+#output {
+    width: 90%;
+    margin-left: 1em;
+}
+
 .login-box .user-box {
     position: relative;
 }

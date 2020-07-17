@@ -24,7 +24,7 @@ input[type=number] {
 }
 
 .disabeled {
-    display: none;
+    display: none !important;
 }
 
 .active {
@@ -215,6 +215,10 @@ footer {
     color: #cc9031;
 }
 
+#myBtn {
+    margin-bottom: 1em;
+}
+
 .table-dark thead {
     color: #ffffb8;
 }
@@ -293,8 +297,8 @@ h1 {
 }
 
 .card-body .btn-outline-secondary {
-    color: #ffffb8;
-    border-color: #ffffb8;
+    color: #ffffb8 !important;
+    border-color: #ffffb8 !important;
 }
 
 .btn-outline-secondary:hover {
@@ -330,7 +334,7 @@ h1 {
 .post-link:hover,
 .newRest:hover {
     color: #f0e740;
-    text-decoration: none;
+    text-decoration: none !important;
     font-weight: 600;
 }
 
