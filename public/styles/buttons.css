@@ -65,3 +65,28 @@
     font-weight: 500;
     box-shadow: 0 0 5px #ffffb8, 0 0 5px #ffffb8;
 }
+
+.btn-toggle {
+    background-color: transparent;
+    color: #cc9031;
+    border: #cc9031 solid 1px;
+}
+
+.btn-toggle:hover {
+    background-color: #cc9031;
+    color: #080014;
+    border: #080014 solid 1px;
+}
+
+.active:hover {
+    color: #080014 !important;
+    background-color: #ffffb8 !important;
+    box-shadow: 0 0 10px #cc9031, 0 0 10px #cc9031 !important;
+    border: #cc9031 solid 1px !important;
+}
+
+.active {
+    color: #080014 !important;
+    background-color: #ffffb8 !important;
+    border: #080014 solid 1px !important;
+}

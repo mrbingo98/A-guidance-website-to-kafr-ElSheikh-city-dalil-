@@ -213,6 +213,7 @@ footer {
 
 .details {
     color: #cc9031;
+    direction: rtl;
 }
 
 #myBtn {
