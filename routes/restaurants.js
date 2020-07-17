@@ -28,8 +28,9 @@ router.post('/', upload.single('image'), middelware.chickOtherRestOwnership(), a
         openTime = req.body.openTime,
         closeTime = req.body.closeTime,
         image = req.file.path,
+        map = req.body.map,
         owner = { id: req.user._id, username: req.user.username }
-    newRest = { name: name, owner: owner, phone: phone, openTime: openTime, closeTime: closeTime, image: image }
+    newRest = { name: name, owner: owner, phone: phone, openTime: openTime, closeTime: closeTime, image: image, map: map }
     restaurant.create(newRest, function(err, newlyCreated) {
         if (err) {
             req.flash('error', 'Somthing went worong please try again')
