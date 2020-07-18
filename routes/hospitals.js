@@ -17,7 +17,7 @@ router.get('/', function(req, res) {
 })
 router.get('/new', function(req, res) {
 
-    res.render('newhospital');
+    res.render('newHospital');
 })
 
 router.post('/', upload.single('image'), async function(req, res) {
