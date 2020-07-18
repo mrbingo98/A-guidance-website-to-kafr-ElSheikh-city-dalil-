@@ -1,0 +1,63 @@
+<%- include('partials/header'); -%>
+    <style>
+        .btn {
+            padding: 0.07em 0.25em;
+            margin-left: 0.5em;
+        }
+        
+        .col8container {
+            border-left: solid rgba(255, 255, 255, 0.418) 1px;
+        }
+        
+        .form-inline {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+        }
+    </style>
+    <header>
+        <div class="container">
+            <h1>
+                <%=hospital.name%>
+            </h1>
+        </div>
+    </header>
+    <div class="container green infcontainer">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="..\<%= hospital.image %>" class="img-responsive col-md-11 rounded-border" alt="<%= hospital.name  %> Pic">
+                    <div class="caption-full">
+                        <p class="phone">
+                            <span>Website: </span>
+                            <a href="<%=hospital.website%>" target="_blank" class="post-link">
+                                <%=hospital.website%>
+                            </a>
+                        </p>
+                        <p class="phone">
+                            <span>PNumber: </span>
+                            <%= hospital.phone %>
+                        </p>
+                    </div>
+                    <% if(isAuthenticated && currentUser.username === hospital.admin.username) {%>
+                        <form action="/hospitals/<%= hospital._id %>/edit" method="GET">
+                            <button class="btn editBtn" style="padding: 0.25em;">
+                            Edit <%= hospital.name %> 
+                        </button>
+                        </form>
+                        <% } %>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <diV class="container col8container" style="margin-bottom: 4em;">
+                    <div class="special_map">
+                        <iframe src="<%= hospital.map %>" class="map" allowfullscreen="true" aria-hidden="false" tabindex=""></iframe>
+                    </div>
+                </diV>
+
+            </div>
+
+        </div>
+    </div>
+
+    <%- include('partials/footer'); -%>

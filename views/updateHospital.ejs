@@ -1,0 +1,38 @@
+<%- include('partials/header'); -%>
+    <style>
+        .user-box textarea {
+            width: 100%;
+            resize: none;
+            height: 200px;
+            text-align: right;
+        }
+    </style>
+    <div class="container green">
+        <div class="login-box">
+
+            <div>
+                <form action="/hospitals/<%= hospital._id %>?_m=PUT" method="POST">
+                    <div class="user-box">
+                        <input type="text" class="form-control" id="validationDefault01" name="name" value="<%= hospital.name %>" required>
+                        <label for="validationDefault01">Name</label>
+                    </div>
+                    <div class="user-box">
+                        <input type="number" class="form-control" id="validationDefault03" value="<%= hospital.phone %>" name="phone" required>
+                        <label for="validationDefault03">Phone</label>
+                    </div>
+                    <div class="user-box">
+                        <input type="text" class="form-control" id="validationDefault03" value="<%= hospital.openTime %>" name="website" required>
+                        <label for="validationDefault03">Website</label>
+                    </div>
+                    <div class="user-box">
+                        <textarea class="Details" cols="30" rows="10" name="map" required placeholder="Past your google map url here...."><%= hospital.map %> </textarea>
+                    </div>
+
+
+                    <button class="submit" type="submit"> Update
+                </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <%- include('partials/footer'); -%>

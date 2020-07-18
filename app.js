@@ -12,6 +12,7 @@ const express = require('express'),
     colPostRoute = require('./routes/collegePosts'),
     colDepartments = require('./routes/colDepartments'),
     colSchedule = require('./routes/colSchedule'),
+    hospitalRoutes = require('./routes/hospitals'),
     //------------requiring Packeges-----------------------//
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
@@ -121,6 +122,7 @@ app.use('/colleges', colDepartments)
 app.use('/colleges', colPostRoute)
 app.use('/colleges', colSchedule)
 app.use('/colleges', collegeRoute)
+app.use('/hospitals', hospitalRoutes)
 app.use(userRoute)
     //------------------port listening------------------------//
 app.listen(process.env.PORT || 3000, () => {

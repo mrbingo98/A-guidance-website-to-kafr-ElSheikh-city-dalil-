@@ -1,0 +1,30 @@
+<%- include('partials/header'); -%>
+
+    <div class="container green">
+        <div class="album py-5">
+            <div class="container">
+                <div class="row">
+                    <% hospitals.forEach(function (hospital) { %>
+                        <div class="col-md-4 sm-6 card-custom">
+                            <div class="card sm-6 mb-4 box-shadow card-custom">
+                                <img src="<%= hospital.image %>" class="card-img-top" alt="<%= hospital[" name "] %> Pic">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%= hospital["name"] %>
+                                            <a href="/hospitals/<%= hospital._id %> " class="btn btn-sm btn-outline-secondary pull-right" role="button" id="viewButton">View</a>
+                                    </h5>
+                                    <p class="card-text pull-right">
+                                        <%= hospital["phone"] %>
+                                    </p>
+                                    <a href="<%=hospital.website%>" target="_blank" class="btn btn-sm btn-outline-secondary pull-left" style="color: #cc9031 !important;border-color: #cc9031 !important;" role="button" id="viewButton">Website</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <% }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIzKl0ihHXQPc5lGcIq_PP-G75XXgZGJU&libraries=places"></script> -->
+    <%- include('partials/footer'); -%>

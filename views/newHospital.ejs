@@ -1,0 +1,46 @@
+<%- include('partials/header'); -%>
+    <style>
+        .user-box textarea {
+            width: 100%;
+            resize: none;
+            height: 200px;
+            text-align: right;
+        }
+    </style>
+    <div class="container green">
+        <div class="login-box">
+            <div id="restaurantRegisteration">
+                <h3>Add Hospital</h3>
+                <form action="/hospitals" method="POST" enctype="multipart/form-data">
+                    <div class="user-box">
+                        <input type="text" class="form-control" id="validationDefault01" name="name" required>
+                        <label for="validationDefault01">Name</label>
+                    </div>
+                    <div class="user-box">
+                        <input type="number" class="form-control" id="validationDefault03" name="phone">
+                        <label for="validationDefault03">Phone</label>
+                    </div>
+                    <div class="user-box">
+                        <input type="text" class="form-control" id="validationDefault03" name="website">
+                        <label for="validationDefault03">Website</label>
+                    </div>
+                    <div class="user-box">
+                        <textarea class="Details" cols="30" rows="10" name="map" required placeholder="Past your google map url here...."></textarea>
+                    </div>
+                    <div class="user-box">
+                        <input type="file" class="form-control" id="validationDefault03" name="image" required>
+                        <label for="validationDefault03">Image</label>
+                    </div>
+
+
+                    <button class="submit" type="submit">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span> Submit
+            </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <%- include('partials/footer'); -%>

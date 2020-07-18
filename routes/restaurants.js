@@ -34,7 +34,7 @@ router.post('/', upload.single('image'), middelware.chickOtherRestOwnership(), a
     restaurant.create(newRest, function(err, newlyCreated) {
         if (err) {
             req.flash('error', 'Somthing went worong please try again')
-            res.redirect('/addrestaurant')
+            res.redirect('/restaurants/new')
         } else {
             res.redirect("/restaurants");
         }
@@ -65,7 +65,7 @@ router.get('/:id/edit', function(req, res) {
     })
 })
 
-router.put('/:id', middelware.checkRestaurantOwner(), middelware.checkRestaurantOwner(), function(req, res) {
+router.put('/:id', middelware.checkRestaurantOwner(), function(req, res) {
     const id = req.params.id,
         name = req.body.name,
         phone = req.body.phone,
@@ -73,8 +73,7 @@ router.put('/:id', middelware.checkRestaurantOwner(), middelware.checkRestaurant
         closeTime = req.body.closeTime,
         map = req.body.map,
         newdata = { name: name, phone: phone, openTime: openTime, closeTime: closeTime, map: map }
-    console.log(newdata)
-    console.log(id)
+
     restaurant.findByIdAndUpdate(id, newdata, function(err, udatedRestaurant) {
         if (err) {
             res.redirect('/restaurants/' + id)
@@ -82,7 +81,6 @@ router.put('/:id', middelware.checkRestaurantOwner(), middelware.checkRestaurant
             // udatedRestaurant.image = image;
             // udatedRestaurant.save()
             res.redirect('/restaurants/' + id)
-            console.log(udatedRestaurant)
         }
 
     })
