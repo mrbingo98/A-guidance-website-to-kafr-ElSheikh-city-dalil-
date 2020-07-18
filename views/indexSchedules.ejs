@@ -24,9 +24,9 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
                                             <% if(isAuthenticated && currentUser.username === username) {%>
-                                                <form action="/colleges/<%= id %>/schedule/<%= schedule._id %>?_m=DELETE" method="POST"><button class="btn btn-sm btn-outline-danger" type="submit">Delete</button></form>
+                                                <form action="/colleges/<%= id %>/schedule/<%= schedule._id %>?_m=DELETE" class="inline-form" method="POST" style="margin-right: 1em;"><button class="btn btn-sm btn-outline-danger" style="width: 100%;height: 100%;" type="submit">Delete</button></form>
                                                 <%} %>
-                                                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="fullScreenImage('<%= schedule._id %>')" id="viewButton">View</button>
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary" style="padding: 0.05em 0.25em;" onclick="fullScreenImage('<%= schedule._id %>')" id="viewButton">View</button>
                                         </div>
                                         <small class="text-muted"> <%=schedule.studyyear%></small>
                                     </div>
